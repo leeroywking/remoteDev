@@ -33,7 +33,7 @@ This guide would be good for any developer who finds that their local developmen
     - 9 add a specific user (I use my main account on this machine "lee")
     - 10 remove all other permissions from the file
 
-  - ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
+   ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
     - In the AWS Console click on your instance and then click the button labeled "connect"
     - This should show you a string that looks something like this ```ssh -i "sshkey.pem" ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com ```
     - We are going to modify it slightly so that it works in a windows machine and uses an absolute path to our key
@@ -43,7 +43,7 @@ This guide would be good for any developer who finds that their local developmen
     - Save this command we will need it in a little bit
 
  ## Step 2 install remote development extension for VScode
-- ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
+ ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
   - click on the extensions tab in VS Code
   - search for ```Remote Development```
   - install it, a new button should show up under your extensions button.
@@ -56,7 +56,7 @@ This guide would be good for any developer who finds that their local developmen
   - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
   - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
-- ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
+ ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
   - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
   - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
   - NVM changes your .bashrc file for the aliases so I source the bashrc file 
@@ -66,11 +66,11 @@ This guide would be good for any developer who finds that their local developmen
   - then you use npm to install create-react-app
   - ``` npm i -g create-react-app ```
 
-- ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
+ ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
   - last create a new react app!
   - ``` create-react-app demo ```
-  
-  - if you are feeling daring here are all of them in one shot
+
+  - if you are feeling daring here are all all those steps in one shot (copy and paste at your own risk but it worked fine for me)
   ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
