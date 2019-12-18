@@ -1,11 +1,12 @@
-# Beginners guide to remote development using AWS free tier
+# Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 Instance for a better Windows based web developer experience.
 
 This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the ubuntu WSL took four and a half minutes to run create-react-app.
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
-- You are using a version of windows/unix/linux that has `ssh` available to the command line[2]
+- You are using a version of windows/unix/linux that has `ssh` available to the command line[2] (this guide is for Windows because unix/linux is honestly a lot more straightforward)
 - You use VScode
+- stable(ish) internet connection
 
 
 
@@ -21,7 +22,6 @@ This guide would be good for any developer who finds that their local developmen
 - confirm you can connect to the instance from the command line
   - change your sshkey permissions 
   ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
-    - These steps are for Windows
     - 1 Right click on sshkey and click the properties 
     - 2 click on the security tab
     - 3 Click on Advanced
@@ -47,6 +47,15 @@ This guide would be good for any developer who finds that their local developmen
   - click on the extensions tab in VS Code
   - search for ```Remote Development```
   - install it, a new button should show up under your extensions button.
+  - click on the new button for remote development
+  - click the "+" symbol to add a new SSH target 
+  - paste the command from before into the prompt that opens at the top of VS Code
+  - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
+  - click on the gear and then whichever configuration file you specified before
+  - you will see your new configuration for the remote server here and there is a problem with the file path
+  - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
+  - After that change it should work so click the folder to open the connection
+## Step 3 configuring server for web development
 - ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
 - ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
 - ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
