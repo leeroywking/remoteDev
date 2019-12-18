@@ -21,11 +21,32 @@ This guide would be good for any developer who finds that their local developmen
 - confirm you can connect to the instance from the command line
   - change your sshkey permissions 
   ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
-  - ``` ssh -i C:\sshkey.pem ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com```
+    - These steps are for Windows
+    - 1 Right click on sshkey and click the properties 
+    - 2 click on the security tab
+    - 3 Click on Advanced
+    - 4 click disable inheritance and convert inherited permissions
+    - 5 start removing users leaving only one
+    - 6 exit the advanced menu
+    - 7 click edit users
+    - 8 click add
+    - 9 add a specific user (I use my main account on this machine "lee")
+    - 10 remove all other permissions from the file
+
   - ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
-  - save this command you will need it in a few minutes
+    - In the AWS Console click on your instance and then click the button labeled "connect"
+    - This should show you a string that looks something like this ```ssh -i "sshkey.pem" ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com ```
+    - We are going to modify it slightly so that it works in a windows machine and uses an absolute path to our key
+    - I saved my key in the root directory of my C: drive to keep this example short
+    - ``` ssh -i C:\sshkey.pem ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com```
+    - right now just ssh to the instance and make sure it works before we bring vscode into this
+    - Save this command we will need it in a little bit
+
  ## Step 2 install remote development extension for VScode
 - ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
+  - click on the extensions tab in VS Code
+  - search for ```Remote Development```
+  - install it, a new button should show up under your extensions button.
 - ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
 - ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
 - ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
