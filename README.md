@@ -12,7 +12,7 @@ This guide would be good for any developer who finds that their local developmen
 ## Step 1 create a free tier EC2 instance
 - As of this writing the t2.micro is still the free tier offering for AWS accounts, this guide will work with any instance size but the examples are written around the t2.micro
 - Create the ec2 instance
-  - 1
+  - 1 ![Launch a new Instance](https://github.com/leeroywking/remoteDev/blob/master/instancecreation/insance1.gif)
   - 2
   - 3
   - Save your ssh key somewhere that you can path to easily for this example I will save it at my root directory C:\sshkey.pem
@@ -47,7 +47,7 @@ This guide would be good for any developer who finds that their local developmen
 
 [1]: Please be careful with AWS free tier, set up a budget and alerts for if you go over, as of this writing they will not default to warn you when you are going to spend money. This guide should only use free tier resources but that is no substitute for setting up alerts.
 
-[2]:
+[2]: Example of ssh working (this is in cmd on windows)
 ```powershell
 C:\Users\dev>ssh
 usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
