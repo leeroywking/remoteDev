@@ -81,6 +81,7 @@ This guide would be good for any developer who finds that their local developmen
   create-react-app demo ;
 
   ```
+  ## Step 5 Adding a local port forward for an even more convenient development experience
   - Adding a local Forward for a seamless local development experience
   ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
     - Open your remote development extension
@@ -91,7 +92,17 @@ This guide would be good for any developer who finds that their local developmen
     - You have to exit out and then reconnect to your remote server
     - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to 
     - ``` http://localhost:3000 ```
-    
+## In closing
+  - There are a lot of advantages to remote development
+    - network placement
+    - leveraging resources outside your local computer
+    - With very small tweaks your dev server will behave exactly like a prod server since these are prod servers
+    - Its free
+    - Its linux so no more WSL
+  - There are also disadvantages
+    - you probably can't work on an airplane
+    - While SSH is pretty bandwidth friendly it does still require an active internet connection
+    - For modern web frameworks you might have to modify system variables for monitoring the filesystem for changes since the default maximum number of files that can be modified is fairly low. (VS Code can walk you through this, you can see me close the tooltip in one of the gifs)
 
 
 
