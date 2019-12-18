@@ -110,15 +110,3 @@ This guide would be good for any developer who finds that their local developmen
 
 
 [1]: Please be careful with AWS free tier, set up a budget and alerts for if you go over, as of this writing they will not default to warn you when you are going to spend money. This guide should only use free tier resources but that is no substitute for setting up alerts.
-
-[2]: Example of ssh working (this is in cmd on windows)
-```powershell
-C:\Users\dev>ssh
-usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
-           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
-           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
-           [-i identity_file] [-J [user@]host[:port]] [-L address]
-           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
-           [-w local_tun[:remote_tun]] destination [command]
-```
