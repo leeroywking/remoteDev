@@ -1,6 +1,6 @@
 # Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 Instance for a better Windows based web developer experience.
 
-This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the ubuntu WSL took four and a half minutes to run create-react-app.
+This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. I made gifs of the steps and did my best to type out actual steps that I did in the gifs.
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
@@ -57,6 +57,25 @@ This guide would be good for any developer who finds that their local developmen
   - After that change it should work so click the folder to open the connection
 ## Step 3 configuring server for web development
 - ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
+  - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
+  - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
+  - NVM changes your .bashrc file for the aliases so I source the bashrc file 
+  - ```source .bashrc ```
+  - next use nvm to install the latest version of node
+  - ``` nvm install node ```
+  - then you use npm to install create-react-app
+  - ``` npm i -g create-react-app ```
+  - if you are feeling daring here are all of them in one shot
+  - last create a new react app!
+  - ``` create-react-app demo ```
+
+  - ```bash
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
+  source .bashrc ;
+  nvm install node ;
+  npm i -g create-react-app ;
+  create-react-app demo ;
+  ```
 - ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
 - ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
 
