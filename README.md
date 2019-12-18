@@ -55,7 +55,7 @@ This guide would be good for any developer who finds that their local developmen
   - you will see your new configuration for the remote server here and there is a problem with the file path
   - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
   - After that change it should work so click the folder to open the connection
-## Step 3 configuring server for web development
+## Step 3/4 configuring server for web development and creating a React app
 - ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
   - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
   - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
@@ -65,17 +65,21 @@ This guide would be good for any developer who finds that their local developmen
   - ``` nvm install node ```
   - then you use npm to install create-react-app
   - ``` npm i -g create-react-app ```
-  - if you are feeling daring here are all of them in one shot
+
+- ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
   - last create a new react app!
   - ``` create-react-app demo ```
+  
+  - if you are feeling daring here are all of them in one shot
   ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
   nvm install node ;
   npm i -g create-react-app ;
   create-react-app demo ;
+
   ```
-- ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
+
 - ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
 
 
