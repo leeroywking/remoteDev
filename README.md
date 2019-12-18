@@ -1,7 +1,7 @@
 # Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 Instance for a better Windows based web developer experience.
 
 ## Why do this?
-This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. I made gifs of the steps and did my best to type out actual actions I took in the gifs.
+This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. Remote development can free up your local system resources and provide access to significantly higher network bandwidth for people with slow internet connections
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
