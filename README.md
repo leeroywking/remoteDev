@@ -91,8 +91,7 @@ This guide would be good for any developer who finds that their local developmen
     - ```LocalForward 127.0.0.1:3000 127.0.0.1:3000 ```
     - You can use whatever port you normally use here but create-react-app defaults to 3000 so thats what I use in this example
     - You have to exit out and then reconnect to your remote server
-    - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to 
-    - ``` http://localhost:3000 ```
+    - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to ``` http://localhost:3000 ```
 ## In closing
   - There are a lot of advantages to remote development
     - network placement
