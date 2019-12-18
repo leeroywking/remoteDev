@@ -81,9 +81,17 @@ This guide would be good for any developer who finds that their local developmen
   create-react-app demo ;
 
   ```
-
-- ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
-
+  - Adding a local Forward for a seamless local development experience
+  ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
+    - Open your remote development extension
+    - Open the settings file by clicking on the gear and then clicking on configuration file you made for this in step 2
+    - Add this line to the end of the configuration 
+    - ```LocalForward 127.0.0.1:3000 127.0.0.1:3000 ```
+    - You can use whatever port you normally use here but create-react-app defaults to 3000 so thats what I use in this example
+    - You have to exit out and then reconnect to your remote server
+    - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to 
+    - ``` http://localhost:3000 ```
+    
 
 
 
