@@ -25,22 +25,10 @@ This guide would be good for any developer who finds that their local developmen
   - ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
   - save this command you will need it in a few minutes
  ## Step 2 install remote development extension for VScode
-- 1
-- 2
-- 3
-- 4
-- 5
-
- ## Step 3 Connect and configure
-- vs code steps
-  - 1
-  - 2
-  - 3
-- remote steps
-  - 1
-  - 2
-  - 3
-
+- ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
+- ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
+- ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
+- ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
 
 
 
