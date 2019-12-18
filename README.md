@@ -1,6 +1,6 @@
 # Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 Instance for a better Windows based web developer experience.
 
-This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. I made gifs of the steps and did my best to type out actual steps that I did in the gifs.
+This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. I made gifs of the steps and did my best to type out actual actions I took in the gifs.
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
@@ -19,7 +19,7 @@ This guide would be good for any developer who finds that their local developmen
   - 3 choose your linux flavor of choice, for this demo I will be using ubuntu 18.04
   - 4 accept defaults for the instance size (t2.micro or whatever is free today), storage, and security groups
   - Create and save your pem key I suggest a short name and an easy to path location.
-- confirm you can connect to the instance from the command line
+- Confirm you can connect to the instance from the command line
   - change your sshkey permissions 
   ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
     - 1 Right click on sshkey and click the properties 
