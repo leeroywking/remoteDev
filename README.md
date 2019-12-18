@@ -32,7 +32,7 @@ This guide would be good for any developer who finds that their local developmen
     - 8 click add
     - 9 add a specific user (I use my main account on this machine "lee")
     - 10 remove all other permissions from the file
-
+   - Connecting to the instance for the first time
    ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
     - In the AWS Console click on your instance and then click the button labeled "connect"
     - This should show you a string that looks something like this ```ssh -i "sshkey.pem" ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com ```
@@ -43,34 +43,36 @@ This guide would be good for any developer who finds that their local developmen
     - Save this command we will need it in a little bit
 
  ## Step 2 install remote development extension for VScode
- ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
-  - click on the extensions tab in VS Code
-  - search for ```Remote Development```
-  - install it, a new button should show up under your extensions button.
-  - click on the new button for remote development
-  - click the "+" symbol to add a new SSH target 
-  - paste the command from before into the prompt that opens at the top of VS Code
-  - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
-  - click on the gear and then whichever configuration file you specified before
-  - you will see your new configuration for the remote server here and there is a problem with the file path
-  - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
-  - After that change it should work so click the folder to open the connection
+   - Installing remote development VS Code extension
+   ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
+    - click on the extensions tab in VS Code
+    - search for ```Remote Development```
+    - install it, a new button should show up under your extensions button.
+    - click on the new button for remote development
+    - click the "+" symbol to add a new SSH target 
+    - paste the command from before into the prompt that opens at the top of VS Code
+    - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
+    - click on the gear and then whichever configuration file you specified before
+    - you will see your new configuration for the remote server here and there is a problem with the file path
+    - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
+    - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
- ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
-  - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
-  - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
-  - NVM changes your .bashrc file for the aliases so I source the bashrc file 
-  - ```source .bashrc ```
-  - next use nvm to install the latest version of node
-  - ``` nvm install node ```
-  - then you use npm to install create-react-app
-  - ``` npm i -g create-react-app ```
+  - Setting up workspace
+  ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
+    - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
+    - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
+    - NVM changes your .bashrc file for the aliases so I source the bashrc file 
+    - ```source .bashrc ```
+    - next use nvm to install the latest version of node
+    - ``` nvm install node ```
+    - then you use npm to install create-react-app
+    - ``` npm i -g create-react-app ```
+  - Launching a react app
+  ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
+    - last create a new react app!
+    - ``` create-react-app demo ```
 
- ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
-  - last create a new react app!
-  - ``` create-react-app demo ```
-
-  - if you are feeling daring here are all all those steps in one shot (copy and paste at your own risk but it worked fine for me)
+    - if you are feeling daring here are all all those steps in one shot (copy and paste at your own risk but it worked fine for me)
   ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
