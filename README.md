@@ -43,19 +43,19 @@ This guide would be good for any developer who finds that their local developmen
     - Save this command we will need it in a little bit
 
  ## Step 2 install remote development extension for VScode
-   - Installing remote development VS Code extension
-   ![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
-    - click on the extensions tab in VS Code
-    - search for ```Remote Development```
-    - install it, a new button should show up under your extensions button.
-    - click on the new button for remote development
-    - click the "+" symbol to add a new SSH target 
-    - paste the command from before into the prompt that opens at the top of VS Code
-    - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
-    - click on the gear and then whichever configuration file you specified before
-    - you will see your new configuration for the remote server here and there is a problem with the file path
-    - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
-    - After that change it should work so click the folder to open the connection
+- Installing remote development VS Code extension
+![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
+   - click on the extensions tab in VS Code
+   - search for ```Remote Development```
+   - install it, a new button should show up under your extensions button.
+   - click on the new button for remote development
+   - click the "+" symbol to add a new SSH target 
+   - paste the command from before into the prompt that opens at the top of VS Code
+   - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
+   - click on the gear and then whichever configuration file you specified before
+   - you will see your new configuration for the remote server here and there is a problem with the file path
+   - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
+   - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
   - Setting up workspace
   ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
