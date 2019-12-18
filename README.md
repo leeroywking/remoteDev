@@ -68,8 +68,7 @@ This guide would be good for any developer who finds that their local developmen
   - if you are feeling daring here are all of them in one shot
   - last create a new react app!
   - ``` create-react-app demo ```
-
-  - ```bash
+  ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
   nvm install node ;
