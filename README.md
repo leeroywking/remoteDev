@@ -7,11 +7,11 @@ This guide would be good for any developer who finds that their local developmen
 - You are using a version of windows/unix/linux that has `ssh` available to the command line[2] (this guide is for Windows because unix/linux is honestly a lot more straightforward)
 - You use VScode
 - stable(ish) internet connection
+- As of this writing the t2.micro is still the free tier offering for AWS accounts, this guide will work with any instance size but the examples are written around the t2.micro
 
 
 
 ## Step 1 create a free tier EC2 instance
-- As of this writing the t2.micro is still the free tier offering for AWS accounts, this guide will work with any instance size but the examples are written around the t2.micro
 - Create the ec2 instance
   ![Launch a new Instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/instance1.gif)
   - 1 Open your AWS management console and open the EC2 dashboard
