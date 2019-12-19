@@ -1,38 +1,59 @@
-# Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 Instance for a better Windows based web developer experience.
+# Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 instance for a better Windows based web developer experience.
 
 ## Why do this?
-This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or in my case because the Ubuntu WSL took four and a half minutes to run create-react-app. Remote development can free up your local system resources and provide access to significantly higher network bandwidth for people with slow internet connections
+This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or, in my case, because the Ubuntu WSL took four and a half minutes to run create-react-app. Remote development can free up your local system resources and provide access to significantly higher network bandwidth for people with slow internet connections.
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
-- You are using a version of windows/unix/linux that has `ssh` available to the command line[2] (this guide is for Windows because unix/linux is honestly a lot more straightforward)
+- You are using a version of Windows/Unix/Linux that has `ssh` available in the command line (this guide is for Windows because Unix/Linux is more straightforward)
 - You use VScode
-- stable(ish) internet connection
-- As of this writing the t2.micro is still the free tier offering for AWS accounts, this guide will work with any instance size but the examples are written around the t2.micro
+- Stable(ish) internet connection
+- As of today the t2.micro is still the free tier offering for AWS account. This guide will work with any instance size but the examples are written around the t2.micro
 
 
 
-## Step 1 create a free tier EC2 instance
-- Create the ec2 instance
+## Step 1: Create a free tier EC2 instance
+- To launch a new instance:
   ![Launch a new Instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/instance1.gif)
-  - 1 Open your AWS management console and open the EC2 dashboard
-  - 2 Click on the launch instance button
-  - 3 choose your linux flavor of choice, for this demo I will be using ubuntu 18.04
-  - 4 accept defaults for the instance size (t2.micro or whatever is free today), storage, and security groups
-  - Create and save your pem key I suggest a short name and an easy to path location.
-- Confirm you can connect to the instance from the command line
-  - change your sshkey permissions 
+  1.  Open your [AWS management console](https://aws.amazon.com/console/) and open the EC2 dashboard
+  1. Click the launch instance button
+  1. Select Ubuntu 18.04 LTS
+  1. Select instance size (t2.micro or whatever is free today)
+  1. Click **Review and Launch** then click **Launch**. A dialogue will open titled **Select an existing key pair or create a new key pair**
+  1. In the first dropdown, select **Create a new key pair**
+  1. Enter a name for your key pair. For this example, I will name the key ```sshkey``` 
+  1. Click **Download Key Pair**. If you are using Chrome, the download will appear in the bottom left corner of your browser. 
+  1. Move ```sshkey.pem``` from your downloads folder to ```C:\sshkey.pem```. 
+    Instructions for Chrome:
+    1. Select **Show in folder** from the carrot symbol on the download
+    1. Right click the folder name and select **cut**
+    1. Go to **This PC** on the left hand side
+    1. Go to **Local Disk** and in the folder, right click and select **paste**. This will prompt you for administrator permission to move. Click continue.
+-  Change your sshkey permissions 
   ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
-    - 1 Right click on sshkey and click the properties 
-    - 2 click on the security tab
-    - 3 Click on Advanced
-    - 4 click disable inheritance and convert inherited permissions
-    - 5 start removing users leaving only one
-    - 6 exit the advanced menu
-    - 7 click edit users
-    - 8 click add
-    - 9 add a specific user (I use my main account on this machine "lee")
-    - 10 remove all other permissions from the file
+  1. Right click on ```sshkey.pem``` and click **Properties**
+  1. Select the **Security** tab
+  1. Click **Advanced**
+  1. Click **Disable inheritance**. A dialouge box will open. Click **Convert inherited permissions into explicit permissions on this object**
+  1. In the Permissions entries box, remove all entries except the Permissions entry with the Principle title **Users**. To remove an entry, click the entry to highlight it and then click **Remove**.
+  1. Click **Apply**
+  1. Click **Okay**. The Advanced Settings box will then close
+  1. Go back to the Properties window that was opened earlier from right-clicking on ```sshkey.pem```
+  1. In the Security tab, click **Edit** and you will be taken to a new window
+  1. Click **Add** and a new dialogue box will appear
+  1. In the box under **Enter the object names to select**, type your system username. 
+  1. To find your system username:
+     1. Open the Windows Start Menu 
+     1. Type **cmd** and hit enter. This will open the Command Prompt to your Home Directory. 
+     1. You system username is whatever appears after the second backslash. For example, when I look at my Home Directory, it says C:\Users\lee. My system username is **lee**.
+  1. Click **Check Names**. If you entered your system username correctly, it will reconfigure your name to be the correct object name. If entered incorrectly, a new dialogue box will appear titled **Name Not Found**. If this new dialogue box appears, click exit and try again.
+  1. Click **OK** and the dialogue box will close
+  1. In the Permissions editing box you should no2 see your system user under **Group or user names:**
+  1. Remove any additional users
+  1. Click **Apply**
+  1. Click **OK** and the Permissions editing box will close
+  1. In the **Security** tab of the Properties dialogue box, click **Apply** and then click **OK**. This will close the dialogue box.
+- Confirm you can connect to the instance from the command line. To confirm:
    - Connecting to the instance for the first time
    ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
     - In the AWS Console click on your instance and then click the button labeled "connect"
