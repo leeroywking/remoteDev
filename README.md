@@ -1,7 +1,7 @@
 # Beginners guide to setting up VS Code's Remote Development plugin pairing with a free-tier AWS EC2 instance for a better Windows based web developer experience.
 
 ## Why do this?
-This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or, in my case, because the Ubuntu WSL took four and a half minutes to run create-react-app. Remote development can free up your local system resources and provide access to significantly higher network bandwidth for people with slow internet connections.
+This guide would be good for any developer who finds that their local development environment is resource constrained. Either through poor network performance or, in my case, because the Ubuntu WSL took four and a half minutes to run create-react-app. Remote development can free up your local system resources and provide access to significantly higher network bandwidth for people with slow internet connections. I picked Windows 10 and AWS because Windows 10 is very prolific and I saw people new to development stuggling with Windows Unix support. I chose AWS because I am more experienced with AWS than I am with the other cloud providers. 
 
 ## Assumptions 
 - You have access to an AWS free tier account[1]
@@ -103,6 +103,8 @@ Set-Acl .\sshkey.pem $acl
     - you probably can't work on an airplane
     - While SSH is pretty bandwidth friendly it does still require an active internet connection
     - For modern web frameworks you might have to modify system variables for monitoring the filesystem for changes since the default maximum number of files that can be modified is fairly low. (VS Code can walk you through this, you can see me close the tooltip in one of the gifs)
+  - If there is interest I would love to do a version of this guide for different cloud/OS combinations. 
+  
 
 
 
