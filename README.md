@@ -29,39 +29,26 @@ This guide would be good for any developer who finds that their local developmen
     1. Right click the folder name and select **cut**
     1. Go to **This PC** on the left hand side
     1. Go to **Local Disk** and in the folder, right click and select **paste**. This will prompt you for administrator permission to move. Click continue.
--  Change your sshkey permissions 
-  ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
-  1. Right click on ```sshkey.pem``` and click **Properties**
-  1. Select the **Security** tab
-  1. Click **Advanced**
-  1. Click **Disable inheritance**. A dialouge box will open. Click **Convert inherited permissions into explicit permissions on this object**
-  1. In the Permissions entries box, remove all entries except the Permissions entry with the Principle title **Users**. To remove an entry, click the entry to highlight it and then click **Remove**.
-  1. Click **Apply**
-  1. Click **Okay**. The Advanced Settings box will then close
-  1. Go back to the Properties window that was opened earlier from right-clicking on ```sshkey.pem```
-  1. In the Security tab, click **Edit** and you will be taken to a new window
-  1. Click **Add** and a new dialogue box will appear
-  1. In the box under **Enter the object names to select**, type your system username. 
-  1. To find your system username:
-     1. Open the Windows Start Menu 
-     1. Type **cmd** and hit enter. This will open the Command Prompt to your Home Directory. 
-     1. You system username is whatever appears after the second backslash. For example, when I look at my Home Directory, it says C:\Users\lee. My system username is **lee**.
-  1. Click **Check Names**. If you entered your system username correctly, it will reconfigure your name to be the correct object name. If entered incorrectly, a new dialogue box will appear titled **Name Not Found**. If this new dialogue box appears, click exit and try again.
-  1. Click **OK** and the dialogue box will close
-  1. In the Permissions editing box you should no2 see your system user under **Group or user names:**
-  1. Remove any additional users
-  1. Click **Apply**
-  1. Click **OK** and the Permissions editing box will close
-  1. In the **Security** tab of the Properties dialogue box, click **Apply** and then click **OK**. This will close the dialogue box.
+-  Change your sshkey permissions
+  - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
+  - Open your powershell prompt
+   - should open to ```C:\Users\yourusername```
+   - type ```cd /``` (this will also work ```cd \``` )
+   - this should bring you to ```C:\``` 
+   - paste the following commands into your powershell prompt
+   ```powershell
+   $acl = Get-Acl .\sshkey.pem
+$acl.SetAccessRuleProtection($true,$false)
+$whoami = whoami
+$Ar = New-Object  system.security.accesscontrol.filesystemaccessrule("$whoami","FullControl","Allow")
+$acl.SetAccessRule($Ar)
+Set-Acl .\sshkey.pem $acl
+``` 
 - Confirm you can connect to the instance from the command line. To confirm:
-   - Connecting to the instance for the first time
-   ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
     - In the AWS Console click on your instance and then click the button labeled "connect"
     - This should show you a string that looks something like this ```ssh -i "sshkey.pem" ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com ```
-    - We are going to modify it slightly so that it works in a windows machine and uses an absolute path to our key
-    - I saved my key in the root directory of my C: drive to keep this example short
-    - ``` ssh -i C:\sshkey.pem ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com```
-    - right now just ssh to the instance and make sure it works before we bring vscode into this
+    - If you are still at ```C:\``` you should be able to copy and paste this command into your powershell prompt.
+    - after you copy/paste and hit enter you should see confirmation that the connection worked. You may need to type ```yes``` when prompted if you would like to trust the key the server is presenting.
     - Save this command we will need it in a little bit
 
  ## Step 2 install remote development extension for VScode
