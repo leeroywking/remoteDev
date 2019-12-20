@@ -69,7 +69,7 @@ Set-Acl .\sshkey.pem $acl
      - Where it says ```sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
      - save the changes to the configuration file
     - After that change it should work so click the folder to open the connection
-## Step 3/4 configuring server for web development and creating a React app
+## Step 3 configuring server for web development and creating a React app
   - Setting up workspace
     - if you are feeling daring here are all all the following steps in one shot (copy and paste them into your new vscode prompt at your own risk but it worked fine for me)
     - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
@@ -92,7 +92,7 @@ Set-Acl .\sshkey.pem $acl
   - Launching a react app
     - ``` create-react-app demo ```
 
-  ## Step 5 Adding a local port forward for an even more convenient development experience
+  ## Step 4 Adding a local port forward for an even more convenient development experience
   - Adding a local Forward for a seamless local development experience
     - Open your remote development extension
     - Open the settings file by clicking on the gear and then clicking on configuration file you made for this in step 2
