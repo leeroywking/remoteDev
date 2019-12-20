@@ -39,7 +39,7 @@ This guide would be good for any developer who finds that their local developmen
      - this should bring you to ```C:\``` 
      - paste the following commands into your powershell prompt (if you did not name your keypair sshkey then you will need to modify these commands before you enter them)
 ```powershell
-   $acl = Get-Acl .\sshkey.pem
+$acl = Get-Acl .\sshkey.pem
 $acl.SetAccessRuleProtection($true,$false)
 $whoami = whoami
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule("$whoami","FullControl","Allow")
