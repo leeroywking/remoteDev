@@ -17,51 +17,40 @@ This guide would be good for any developer who finds that their local developmen
   ![Launch a new Instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/instance1.gif)
   1.  Open your [AWS management console](https://aws.amazon.com/console/) and open the EC2 dashboard
   1. Click the launch instance button
-  1. Select Ubuntu 18.04 LTS
+  1. Select Ubuntu Server 18.04 LTS
   1. Select instance size (t2.micro or whatever is free today)
   1. Click **Review and Launch** then click **Launch**. A dialogue will open titled **Select an existing key pair or create a new key pair**
   1. In the first dropdown, select **Create a new key pair**
   1. Enter a name for your key pair. For this example, I will name the key ```sshkey``` 
   1. Click **Download Key Pair**. If you are using Chrome, the download will appear in the bottom left corner of your browser. 
+  1. Click launch instance
   1. Move ```sshkey.pem``` from your downloads folder to ```C:\sshkey.pem```. 
     Instructions for Chrome:
     1. Select **Show in folder** from the carrot symbol on the download
     1. Right click the folder name and select **cut**
     1. Go to **This PC** on the left hand side
     1. Go to **Local Disk** and in the folder, right click and select **paste**. This will prompt you for administrator permission to move. Click continue.
--  Change your sshkey permissions 
-  ![changing permissions](https://github.com/leeroywking/remoteDev/blob/master/gifs/modifyPemKey.gif)
-  1. Right click on ```sshkey.pem``` and click **Properties**
-  1. Select the **Security** tab
-  1. Click **Advanced**
-  1. Click **Disable inheritance**. A dialouge box will open. Click **Convert inherited permissions into explicit permissions on this object**
-  1. In the Permissions entries box, remove all entries except the Permissions entry with the Principle title **Users**. To remove an entry, click the entry to highlight it and then click **Remove**.
-  1. Click **Apply**
-  1. Click **Okay**. The Advanced Settings box will then close
-  1. Go back to the Properties window that was opened earlier from right-clicking on ```sshkey.pem```
-  1. In the Security tab, click **Edit** and you will be taken to a new window
-  1. Click **Add** and a new dialogue box will appear
-  1. In the box under **Enter the object names to select**, type your system username. 
-  1. To find your system username:
-     1. Open the Windows Start Menu 
-     1. Type **cmd** and hit enter. This will open the Command Prompt to your Home Directory. 
-     1. You system username is whatever appears after the second backslash. For example, when I look at my Home Directory, it says C:\Users\lee. My system username is **lee**.
-  1. Click **Check Names**. If you entered your system username correctly, it will reconfigure your name to be the correct object name. If entered incorrectly, a new dialogue box will appear titled **Name Not Found**. If this new dialogue box appears, click exit and try again.
-  1. Click **OK** and the dialogue box will close
-  1. In the Permissions editing box you should no2 see your system user under **Group or user names:**
-  1. Remove any additional users
-  1. Click **Apply**
-  1. Click **OK** and the Permissions editing box will close
-  1. In the **Security** tab of the Properties dialogue box, click **Apply** and then click **OK**. This will close the dialogue box.
+-  Change your sshkey permissions
+   - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
+   - Open your powershell prompt
+     - open your start menu and start typing ```powershell``` then click on **Windows Powershell** when you see it to open the terminal
+     - should open to ```C:\Users\yourusername```
+     - type ```cd /``` (this will also work ```cd \``` )
+     - this should bring you to ```C:\``` 
+     - paste the following commands into your powershell prompt (if you did not name your keypair sshkey then you will need to modify these commands before you enter them)
+```powershell
+$acl = Get-Acl .\sshkey.pem
+$acl.SetAccessRuleProtection($true,$false)
+$whoami = whoami
+$Ar = New-Object  system.security.accesscontrol.filesystemaccessrule("$whoami","FullControl","Allow")
+$acl.SetAccessRule($Ar)
+Set-Acl .\sshkey.pem $acl
+``` 
 - Confirm you can connect to the instance from the command line. To confirm:
-   - Connecting to the instance for the first time
-   ![connecting to instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/connectToInstance.gif)
-    - In the AWS Console click on your instance and then click the button labeled "connect"
+    - In the AWS Console click on your instance and then click the button labeled **Connect**
     - This should show you a string that looks something like this ```ssh -i "sshkey.pem" ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com ```
-    - We are going to modify it slightly so that it works in a windows machine and uses an absolute path to our key
-    - I saved my key in the root directory of my C: drive to keep this example short
-    - ``` ssh -i C:\sshkey.pem ec2-user@ec2-34-219-68-139.us-west-2.compute.amazonaws.com```
-    - right now just ssh to the instance and make sure it works before we bring vscode into this
+    - If you are still at ```C:\``` you should be able to copy and paste this command into your powershell prompt.
+    - after you copy/paste and hit enter you should see confirmation that the connection worked. You may need to type ```yes``` when prompted if you would like to trust the key the server is presenting.
     - Save this command we will need it in a little bit
 
  ## Step 2 install remote development extension for VScode
@@ -70,16 +59,30 @@ This guide would be good for any developer who finds that their local developmen
    - click on the extensions tab in VS Code
    - search for ```Remote Development```
    - install it, a new button should show up under your extensions button.
+   - use the dropdown to select **SSH TARGETS**
    - click on the new button for remote development
    - click the "+" symbol to add a new SSH target 
    - paste the command from before into the prompt that opens at the top of VS Code
-   - there is a bug right now in how it parses that command so you will need to slightly modify the configuration file this creates 
-   - click on the gear and then whichever configuration file you specified before
-   - you will see your new configuration for the remote server here and there is a problem with the file path
-   - Where it says ```C:sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
-   - After that change it should work so click the folder to open the connection
+   - select the top configuration file
+   - something like **C:\Users\lee\\.ssh\config**
+   - there is a quirk right now in how it parses that command so you will need to slightly modify the configuration file this creates to fix that we have to change the path for the ssh key
+     - click on the gear and then whichever configuration file you specified before
+     - you will see your new configuration for the remote server here and there is a problem with the file path
+     - Where it says ```sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
+     - save the changes to the configuration file
+    - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
   - Setting up workspace
+    - if you are feeling daring here are all all the following steps in one shot (copy and paste them into your new vscode prompt at your own risk but it worked fine for me)
+    - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
+  ```bash
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
+  source .bashrc ;
+  nvm install node ;
+  npm i -g create-react-app ;
+  create-react-app demo ;
+
+  ```
   ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
     - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
     - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
@@ -94,15 +97,6 @@ This guide would be good for any developer who finds that their local developmen
     - last create a new react app!
     - ``` create-react-app demo ```
 
-    - if you are feeling daring here are all all those steps in one shot (copy and paste at your own risk but it worked fine for me)
-  ```bash
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
-  source .bashrc ;
-  nvm install node ;
-  npm i -g create-react-app ;
-  create-react-app demo ;
-
-  ```
   ## Step 5 Adding a local port forward for an even more convenient development experience
   - Adding a local Forward for a seamless local development experience
   ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
