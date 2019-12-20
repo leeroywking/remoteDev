@@ -69,9 +69,19 @@ Set-Acl .\sshkey.pem $acl
      - click on the gear and then whichever configuration file you specified before
      - you will see your new configuration for the remote server here and there is a problem with the file path
      - Where it says ```sshkey.pem``` we have to change that to ```C:\sshkey.pem```.
+     - save the changes to the configuration file
     - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
   - Setting up workspace
+    - if you are feeling daring here are all all the following steps in one shot (copy and paste at your own risk but it worked fine for me)
+  ```bash
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
+  source .bashrc ;
+  nvm install node ;
+  npm i -g create-react-app ;
+  create-react-app demo ;
+
+  ```
   ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
     - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
     - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
@@ -86,15 +96,6 @@ Set-Acl .\sshkey.pem $acl
     - last create a new react app!
     - ``` create-react-app demo ```
 
-    - if you are feeling daring here are all all those steps in one shot (copy and paste at your own risk but it worked fine for me)
-  ```bash
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
-  source .bashrc ;
-  nvm install node ;
-  npm i -g create-react-app ;
-  create-react-app demo ;
-
-  ```
   ## Step 5 Adding a local port forward for an even more convenient development experience
   - Adding a local Forward for a seamless local development experience
   ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
