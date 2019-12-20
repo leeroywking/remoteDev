@@ -94,21 +94,14 @@ Set-Acl .\sshkey.pem $acl
   - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to ``` http://localhost:3000 ```
 ## In closing
   - There are a lot of advantages to remote development
-    - network placement
-    - leveraging resources outside your local computer
-    - With very small tweaks your dev server will behave exactly like a prod server since these are prod servers
     - Its free
-    - Its linux so no more WSL
+    - network placement (run a speedtest its great)
+    - leveraging resources outside your local computer
+    - Its Linux so no more WSL/linux emulation on Windows
   - There are also disadvantages
     - you probably can't work on an airplane
     - While SSH is pretty bandwidth friendly it does still require an active internet connection
     - For modern web frameworks you might have to modify system variables for monitoring the filesystem for changes since the default maximum number of files that can be modified is fairly low. (VS Code can walk you through this, you can see me close the tooltip in one of the gifs)
   - If there is interest I would love to do a version of this guide for different cloud/OS combinations. 
   
-
-
-
-
-
-
 [1]: Please be careful with AWS free tier, set up a budget and alerts for if you go over, as of this writing they will not default to warn you when you are going to spend money. This guide should only use free tier resources but that is no substitute for setting up alerts.
