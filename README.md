@@ -73,8 +73,8 @@ Set-Acl .\sshkey.pem $acl
     - After that change it should work so click the folder to open the connection
 ## Step 3/4 configuring server for web development and creating a React app
   - Setting up workspace
-    - if you are feeling daring here are all all the following steps in one shot (copy and paste them into your new vscode promptat your own risk but it worked fine for me)
-    - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** and paste the following commands into it.
+    - if you are feeling daring here are all all the following steps in one shot (copy and paste them into your new vscode prompt at your own risk but it worked fine for me)
+    - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
   ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
