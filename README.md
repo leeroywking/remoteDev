@@ -31,13 +31,13 @@ This guide would be good for any developer who finds that their local developmen
     1. Go to **This PC** on the left hand side
     1. Go to **Local Disk** and in the folder, right click and select **paste**. This will prompt you for administrator permission to move. Click continue.
 -  Change your sshkey permissions
-  - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
-  - Open your powershell prompt
-    - open your start menu and start typing ```powershell``` then click on powershell when you see it to open the terminal
-    - should open to ```C:\Users\yourusername```
-    - type ```cd /``` (this will also work ```cd \``` )
-    - this should bring you to ```C:\``` 
-    - paste the following commands into your powershell prompt (if you did not name your keypair sshkey then you will need to modify these commands before you enter them)
+   - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
+   - Open your powershell prompt
+     - open your start menu and start typing ```powershell``` then click on powershell when you see it to open the terminal
+     - should open to ```C:\Users\yourusername```
+     - type ```cd /``` (this will also work ```cd \``` )
+     - this should bring you to ```C:\``` 
+     - paste the following commands into your powershell prompt (if you did not name your keypair sshkey then you will need to modify these commands before you enter them)
    ```powershell
    $acl = Get-Acl .\sshkey.pem
 $acl.SetAccessRuleProtection($true,$false)
