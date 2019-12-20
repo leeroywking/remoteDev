@@ -71,8 +71,8 @@ Set-Acl .\sshkey.pem $acl
     - After that change it should work so click the folder to open the connection
 ## Step 3 configuring server for web development and creating a React app
   - Setting up workspace
-    - if you are feeling daring here are all all the following steps in one shot (copy and paste them into your new vscode prompt at your own risk but it worked fine for me)
-    - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
+  - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
+  
   ```bash
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
   source .bashrc ;
@@ -81,26 +81,16 @@ Set-Acl .\sshkey.pem $acl
   create-react-app demo ;
 
   ```
-    - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
-    - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
-    - NVM changes your .bashrc file for the aliases so I source the bashrc file 
-    - ```source .bashrc ```
-    - next use nvm to install the latest version of node
-    - ``` nvm install node ```
-    - then you use npm to install create-react-app
-    - ``` npm i -g create-react-app ```
-  - Launching a react app
-    - ``` create-react-app demo ```
+  
 
   ## Step 4 Adding a local port forward for an even more convenient development experience
-  - Adding a local Forward for a seamless local development experience
-    - Open your remote development extension
-    - Open the settings file by clicking on the gear and then clicking on configuration file you made for this in step 2
-    - Add this line to the end of the configuration 
-    - ```LocalForward 127.0.0.1:3000 127.0.0.1:3000 ```
-    - You can use whatever port you normally use here but create-react-app defaults to 3000 so thats what I use in this example
-    - You have to exit out and then reconnect to your remote server
-    - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to ``` http://localhost:3000 ```
+  - Open your remote development extension
+  - Open the settings file by clicking on the gear and then clicking on configuration file you made for this in step 2
+  - Add this line to the end of the configuration 
+  - ```LocalForward 127.0.0.1:3000 127.0.0.1:3000 ```
+  - You can use whatever port you normally use here but create-react-app defaults to 3000 so thats what I use in this example
+  - You have to exit out and then reconnect to your remote server
+  - When you do this your ssh connection will also forward the designated port on your local machine through the ssh connection to your remote development env. This means its as secure as your connection is and as convenient as opening your web browser and navigating to ``` http://localhost:3000 ```
 ## In closing
   - There are a lot of advantages to remote development
     - network placement
