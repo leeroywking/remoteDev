@@ -14,7 +14,6 @@ This guide would be good for any developer who finds that their local developmen
 
 ## Step 1: Create a free tier EC2 instance
 - To launch a new instance:
-  ![Launch a new Instance](https://github.com/leeroywking/remoteDev/blob/master/gifs/instance1.gif)
   1.  Open your [AWS management console](https://aws.amazon.com/console/) and open the EC2 dashboard
   1. Click the launch instance button
   1. Select Ubuntu Server 18.04 LTS
@@ -55,7 +54,6 @@ Set-Acl .\sshkey.pem $acl
 
  ## Step 2 install remote development extension for VScode
 - Installing remote development VS Code extension
-![Install remote Development VS Code extension](https://github.com/leeroywking/remoteDev/blob/master/gifs/remoteDevSetup.gif)
    - click on the extensions tab in VS Code
    - search for ```Remote Development```
    - install it, a new button should show up under your extensions button.
@@ -83,7 +81,6 @@ Set-Acl .\sshkey.pem $acl
   create-react-app demo ;
 
   ```
-  ![Setting up workspace](https://github.com/leeroywking/remoteDev/blob/master/gifs/settingUpWorkspace.gif)
     - I use nodejs as my daily driver so NVM is a must have for me. You can get a one-liner for installing it from [NVM github](https://github.com/nvm-sh/nvm)
     - ```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ```
     - NVM changes your .bashrc file for the aliases so I source the bashrc file 
@@ -93,13 +90,10 @@ Set-Acl .\sshkey.pem $acl
     - then you use npm to install create-react-app
     - ``` npm i -g create-react-app ```
   - Launching a react app
-  ![Launching React](https://github.com/leeroywking/remoteDev/blob/master/gifs/launchingReact.gif)
-    - last create a new react app!
     - ``` create-react-app demo ```
 
   ## Step 5 Adding a local port forward for an even more convenient development experience
   - Adding a local Forward for a seamless local development experience
-  ![Adding a Local Forward](https://github.com/leeroywking/remoteDev/blob/master/gifs/addingLocalForward.gif)
     - Open your remote development extension
     - Open the settings file by clicking on the gear and then clicking on configuration file you made for this in step 2
     - Add this line to the end of the configuration 
