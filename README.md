@@ -23,19 +23,19 @@ This guide would be good for any developer who finds that their local developmen
   1. Enter a name for your key pair. For this example, I will name the key ```sshkey``` 
   1. Click **Download Key Pair**. If you are using Chrome, the download will appear in the bottom left corner of your browser
   1. Click launch instance
-  1. Move ```sshkey.pem``` from your downloads folder to ```C:\sshkey.pem```
+  1. Move `sshkey.pem` from your downloads folder to `C:\sshkey.pem`
     Instructions for Chrome:
     1. Select **Show in folder** from the carrot symbol on the download
     1. Right click the folder name and select **cut**
     1. Go to **This PC** on the left hand side
     1. Go to **Local Disk** and in the folder, right click and select **paste**. This will prompt you for administrator permission to move. Click continue
 -  Change your sshkey permissions
-   - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
+     - Amazon wont let you connect to an instance with an ssh key that is readable to other users on the system. Here is how we ensure other users on our system do not have permissions to the ssh key file. 
    - Open your powershell prompt
      - open your start menu and start typing ```powershell``` then click on **Windows Powershell** when you see it to open the terminal
-     - should open to ```C:\Users\yourusername```
-     - type ```cd /``` (this will also work ```cd \``` )
-     - this should bring you to ```C:\``` 
+     - should open to `C:\Users\yourusername`
+     - type `cd /` (this will also work `cd \` )
+     - this should bring you to `C:\` 
      - paste the following commands into your powershell prompt (if you did not name your keypair sshkey then you will need to modify these commands before you enter them)
 ```powershell
 $acl = Get-Acl .\sshkey.pem
@@ -74,14 +74,13 @@ Set-Acl .\sshkey.pem $acl
   - To open a new terminal in vscode look for the **Terminal** drop down menu at the top of the window, click on **New Terminal** or press the **Ctrl+Shift+`** and paste the following commands into it. (go to step 5 after they finish)
   
   
-  ```bash
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
-  source .bashrc ;
-  nvm install node ;
-  npm i -g create-react-app ;
-  create-react-app demo ;
-
-  ```
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash ;
+source .bashrc ;
+nvm install node ;
+npm i -g create-react-app yarn;
+create-react-app demo ;
+```
   
 
   ## Step 4 Adding a local port forward for an even more convenient development experience
